@@ -7,6 +7,7 @@ from sqlalchemy.orm.session import Session
 from user import User
 from user import Base
 
+
 class DB:
     """DB class
     """
@@ -42,4 +43,3 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
-
