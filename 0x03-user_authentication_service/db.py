@@ -7,7 +7,6 @@ from sqlalchemy.orm.session import Session
 from user import User
 from user import Base
 
-
 class DB:
     """DB class
     """
@@ -20,21 +19,6 @@ class DB:
         Base.metadata.create_all(self._engine)
         self.__session = None
 
-    def add_user(self, email: str, hashed_password: str) -> User:
-        """Add a new user to the database.
-
-        Args:
-            email (str): The email address of the user.
-            hashed_password (str): The hashed password of the user.
-
-        Returns:
-            User: The newly created User object.
-        """
-        user = User(email=email, hashed_password=hashed_password)
-        self._session.add(user)
-        self._session.commit()
-        return user
-
     @property
     def _session(self) -> Session:
         """Memoized session object
@@ -43,3 +27,19 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
+
+    def add_user(self, email: str, hashed_password: str) -> User:
+        """Add a new user to the database
+
+        Args:
+            email (str): Email of the user
+            hashed_password (str): Hashed password of the user
+
+        Returns:
+            User: The created User object
+        """
+        user = User(email=email, hashed_password=hashed_password)
+        self._session.add(user)
+        self._session.commit()
+        return user
+
