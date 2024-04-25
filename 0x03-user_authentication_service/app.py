@@ -28,10 +28,10 @@ def users() -> str:
     email, password = request.form.get("email"), request.form.get("password")
     try:
         AUTH.register_user(email, password)
-        return jsonify({"email": email, "message": "User created"})
+        return jsonify({"email": email, "message": "user created"})
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0", port="5000", threaded=False)
