@@ -16,7 +16,7 @@ def index() -> str:
     Return:
         - The home page's payload.
     """
-    return jsonfiy({"message": "Bienvenue"})
+    return jsonify({"message": "Bienvenue"})
 
 
 if __name__ == "__main__":
