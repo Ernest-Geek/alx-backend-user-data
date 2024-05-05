@@ -68,6 +68,3 @@ class Auth:
             TypeVar('User'): The current user or None.
         """
         return None
-
-    def BasicAuth(Auth):
-        pass
